@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Athenaze</title>
-    <base href="/" />
+    <base href="/athenaze/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
 </head>
@@ -19,6 +19,14 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="jutils.js"></script>
 </body>
 
 </html>
+<!--
+To build release: dotnet publish -c Release
+
+deploy from: bin\Release\netstandard2.1\publish\_framework\_bin
+
+test: dotnet run --pathbase=/athenaze
+-->

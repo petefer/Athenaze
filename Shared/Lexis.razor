@@ -6,7 +6,7 @@
 <input @bind="lexis"/>
 
 <button class="btn btn-primary" @onclick="Destructure">Destructure</button>
-<hr width="50%"/>
+<hr width="30%"/>
 
 @if (!String.IsNullOrEmpty(trans))
 {
@@ -38,7 +38,7 @@
 }
 
 @code {
-    private string lexis { get; set; }
+    public string lexis { get; set; }
     private string trans { get; set; }
     private string type { get; set; }
     private string number { get; set; }
@@ -90,7 +90,7 @@
         }
     }
 
-    private void Destructure()
+    public void Destructure()
     {
         lexis = lexis.Trim();
         trans = type = number = ptosis = gender = mood = person = String.Empty;

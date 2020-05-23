@@ -1,8 +1,9 @@
 ﻿@page "/1A"
+@inject IJSRuntime jsRuntime
 
 <h1>1 Ο ΔΙΚΑΙΟΠΟΛΙΣ (α)</h1>
 
-<p>
+<p @ondblclick="DoubleClick">
 ὁ Δικαιόπολις Ἀθηναῖος ἐστιν.
 οἰκεῖ δὲ ὁ Δικαιόπολις οὐκ ἐν ταῖς Ἀθήναις ἀλλἁ ἐν τοῖς ἀγροῖς.
 αὐτουργὸς γάρ ἐστιν.
@@ -19,4 +20,18 @@
 Καλὸς γάρ ἐστιν ὁ κλῆρος καὶ σῖτον παρέχει οὐ πολὺν ἀλλὰ ἱκανόν.
 </p>
 
-<Lexis />
+<Lexis @ref="child" />
+
+@code {
+    Lexis child;
+    private void DoubleClick()
+    {
+        Console.WriteLine($"DoubleClick 1");
+        var v = ((IJSInProcessRuntime)jsRuntime).Invoke<object>("GetSelectedText");
+        var s = v.ToString();
+        Console.WriteLine($"DoubleClick 2");
+        Console.WriteLine($"DoubleClick {s}");
+        child.lexis = s;
+        child.Destructure();        
+    }
+}
