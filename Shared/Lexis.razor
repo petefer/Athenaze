@@ -1,0 +1,1021 @@
+﻿@inject HttpClient Http
+@using System.Text;
+@using System.Globalization;
+<hr />
+<h4>Lexis</h4>
+<input @bind="lexis"/>
+
+<button class="btn btn-primary" @onclick="Destructure">Destructure</button>
+<hr width="50%"/>
+
+@if (!String.IsNullOrEmpty(trans))
+{
+    <p>Translation: <i><span>@trans</span></i></p>
+}
+@if (!String.IsNullOrEmpty(type))
+{
+    <p>Type: <i><span>@type</span></i></p>
+}
+@if (!String.IsNullOrEmpty(number))
+{
+    <p>Number: <i><span>@number</span></i></p>
+}
+@if (!String.IsNullOrEmpty(ptosis))
+{
+    <p>Case: <i><span>@ptosis</span></i></p>
+}
+@if (!String.IsNullOrEmpty(gender))
+{
+    <p>Gender: <i><span>@gender</span></i></p>
+}
+@if (!String.IsNullOrEmpty(mood))
+{
+    <p>Mood: <i><span>@mood</span></i></p>
+}
+@if (!String.IsNullOrEmpty(person))
+{
+    <p>Person: <i><span>@person</span></i></p>
+}
+
+@code {
+    private string lexis { get; set; }
+    private string trans { get; set; }
+    private string type { get; set; }
+    private string number { get; set; }
+    private string ptosis { get; set; }
+    private string gender { get; set; }
+    private string mood { get; set; }
+    private string person { get; set; }
+    Dictionary<string, string> wordGlossary = new Dictionary<string, string>(128);
+    Dictionary<string, string> stemNounGlossary = new Dictionary<string, string>(128);
+    Dictionary<string, string> stemVerbGlossary = new Dictionary<string, string>(128);
+    Dictionary<string, string> stemAdjGlossary = new Dictionary<string, string>(32);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetGlossaryWords();
+        await GetStems();
+    }
+
+    async Task GetGlossaryWords()
+    {
+        string url = @"words.txt";
+        string glossaryWords = await Http.GetStringAsync(url);
+        foreach (string line in glossaryWords.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            string[] ts = line.Split(':');
+            wordGlossary.Add(ts[0], ts[1]);
+        }
+    }
+
+    async Task GetStems()
+    {
+        string stems = await Http.GetStringAsync("stemsNoun.txt");
+        foreach (string line in stems.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            string[] ts = line.Split(':');
+            stemNounGlossary.Add(ts[0], ts[1]);
+        }
+        stems = await Http.GetStringAsync("stemsVerb.txt");
+        foreach (string line in stems.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            string[] ts = line.Split(':');
+            stemVerbGlossary.Add(ts[0], ts[1]);
+        }
+        stems = await Http.GetStringAsync("stemsAdj.txt");
+        foreach (string line in stems.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+        {
+            string[] ts = line.Split(':');
+            stemAdjGlossary.Add(ts[0], ts[1]);
+        }
+    }
+
+    private void Destructure()
+    {
+        lexis = lexis.Trim();
+        trans = type = number = ptosis = gender = mood = person = String.Empty;
+        Console.WriteLine($"Destructure '{lexis}'");
+
+        DestructPronoun();
+        if (type.Length == 0)
+        {
+            DestructArticle();
+        }
+        if (type.Length == 0)
+        {
+            DestructParticle();
+        }
+        if (type.Length == 0)
+        {
+            DestructConjunction();
+        }
+        if (type.Length == 0)
+        {
+            DestructPreposition();
+        }
+        if (type.Length == 0)
+        {
+            DestructDeclension("Adjective", stemAdjGlossary);
+        }
+        if (type.Length == 0)
+        {
+            DestructAdverb();
+        }
+        if (type.Length == 0)
+        {
+            DestructDeclension("Noun", stemNounGlossary);
+        }
+        if (type.Length == 0)
+        {
+            DestructVerb();
+        }
+        if (trans.Length == 0)
+        {
+            try
+            {
+                string normalStr = NormalizeString(lexis);
+                Console.WriteLine($"Lexis {lexis} encoded to {normalStr}.");
+                trans = wordGlossary[normalStr];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Looked up {lexis} in wordGlossary: " + ex.Message);
+            }
+        }
+        StateHasChanged();
+    }
+
+    void DestructPronoun()
+    {
+        string p = NormalizeString(lexis);
+        if (p.Equals("αυτον"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "First";
+            trans = "him, it";
+        }
+        if (p.Equals("εγω"))
+        {
+            type = "Pronoun";
+            mood = "Nominative";
+            number = "Singular";
+            person = "First";
+            trans = "I";
+        }
+        if (p.Equals("εμου"))
+        {
+            type = "Pronoun";
+            mood = "Genitive";
+            number = "Singular";
+            person = "First";
+            trans = "of me";
+        }
+        if (p.Equals("εμου"))
+        {
+            type = "Pronoun";
+            mood = "Dative";
+            number = "Singular";
+            person = "First";
+            trans = "to or for me";
+        }
+        if (p.Equals("εμου"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "First";
+            trans = "me";
+        }
+
+        if (p.Equals("ημεις"))
+        {
+            type = "Pronoun";
+            mood = "Nominative";
+            number = "Plural";
+            person = "First";
+            trans = "we";
+        }
+        if (p.Equals("ημων"))
+        {
+            type = "Pronoun";
+            mood = "Genitive";
+            number = "Plural";
+            person = "First";
+            trans = "of me";
+        }
+        if (p.Equals("ημιν"))
+        {
+            type = "Pronoun";
+            mood = "Dative";
+            number = "Plural";
+            person = "First";
+            trans = "to or for us";
+        }
+        if (p.Equals("ημας"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Plural";
+            person = "First";
+            trans = "me";
+        }
+
+        if (p.Equals("συ"))
+        {
+            type = "Pronoun";
+            mood = "Nominative";
+            number = "Singular";
+            person = "Second";
+            trans = "you";
+        }
+        if (p.Equals("σου"))
+        {
+            type = "Pronoun";
+            mood = "Genitive";
+            number = "Singular";
+            person = "Second";
+            trans = "of you";
+        }
+        if (p.Equals("σοι"))
+        {
+            type = "Pronoun";
+            mood = "Dative";
+            number = "Singular";
+            person = "Second";
+            trans = "to or for you";
+        }
+        if (p.Equals("σε"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "Second";
+            trans = "you";
+        }
+
+        if (p.Equals("υμεις"))
+        {
+            type = "Pronoun";
+            mood = "Nominative";
+            number = "Plural";
+            person = "Second";
+            trans = "you";
+        }
+        if (p.Equals("ημων"))
+        {
+            type = "Pronoun";
+            mood = "Genitive";
+            number = "Plural";
+            person = "Second";
+            trans = "of you";
+        }
+        if (p.Equals("ημιν"))
+        {
+            type = "Pronoun";
+            mood = "Dative";
+            number = "Plural";
+            person = "Second";
+            trans = "to or for you";
+        }
+        if (p.Equals("ημας"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Plural";
+            person = "Second";
+            trans = "you";
+        }
+    }
+
+    void DestructArticle()
+    {
+        string p = NormalizeString(lexis);
+        if (p.Equals("ο"))
+        {
+            type = "Article";
+            mood = "Nominative";
+            number = "Singular";
+            gender = "Masculine";
+            trans = "the";
+        }
+        if (p.Equals("η"))
+        {
+            type = "Article";
+            mood = "Nominative";
+            number = "Singular";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("το"))
+        {
+            type = "Article";
+            mood = "Nominative or Accusative";
+            number = "Singular";
+            gender = "Neuter";
+            trans = "the";
+        }
+        if (p.Equals("του"))
+        {
+            type = "Article";
+            mood = "Genitive";
+            number = "Singular";
+            gender = "Masculine or Neuter";
+            trans = "the";
+        }
+        if (p.Equals("της"))
+        {
+            type = "Article";
+            mood = "Genitive";
+            number = "Singular";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("τω"))
+        {
+            type = "Article";
+            mood = "Dative";
+            number = "Singular";
+            gender = "Masculine or Neuter";
+            trans = "the";
+        }
+        if (p.Equals("τη"))
+        {
+            type = "Article";
+            mood = "Dative";
+            number = "Singular";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("τον"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Singular";
+            gender = "Masculine";
+            trans = "the";
+        }
+        if (p.Equals("την"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Singular";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("το"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Singular";
+            gender = "Neuter";
+            trans = "the";
+        }
+        if (p.Equals("οι"))
+        {
+            type = "Article";
+            mood = "Nominative";
+            number = "Plural";
+            gender = "Masculine";
+            trans = "the";
+        }
+        if (p.Equals("αι"))
+        {
+            type = "Article";
+            mood = "Nominative";
+            number = "Plural";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("τα"))
+        {
+            type = "Article";
+            mood = "Nominative";
+            number = "Plural";
+            gender = "Neuter";
+            trans = "the";
+        }
+        if (p.Equals("των"))
+        {
+            type = "Article";
+            mood = "Genitive";
+            number = "Plural";
+            gender = "Masculine, Feminine or Neuter";
+            trans = "the";
+        }
+        if (p.Equals("τοις"))
+        {
+            type = "Article";
+            mood = "Dative";
+            number = "Plural";
+            gender = "Masculine or Neuter";
+            trans = "the";
+        }
+        if (p.Equals("ταις"))
+        {
+            type = "Article";
+            mood = "Dative";
+            number = "Plural";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("τους"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Plural";
+            gender = "Masculine";
+            trans = "the";
+        }
+        if (p.Equals("τας"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Plural";
+            gender = "Feminine";
+            trans = "the";
+        }
+        if (p.Equals("τα"))
+        {
+            type = "Article";
+            mood = "Accusative";
+            number = "Plural";
+            gender = "Neuter";
+            trans = "the";
+        }
+    }
+
+    void DestructParticle()
+    {
+        string p = NormalizeString(lexis);
+        if (p.Equals("ουν"))
+        {
+            type = "Particle";
+            trans = "and so";
+        }
+    }
+
+    void DestructConjunction()
+    {
+        string p = NormalizeString(lexis);
+        if (p.Equals("δε"))
+        {
+            type = "Conjunction";
+            trans = "but, and";
+        }
+        if (p.Equals("τε"))
+        {
+            type = "Conjunction";
+            trans = "and, also";
+        }
+        if (p.Equals("ἐπεὶ"))
+        {
+            type = "Conjunction";
+            trans = "when";
+        }
+    }
+
+    void DestructPreposition()
+    {
+        string p = NormalizeString(lexis);
+        if (p.Equals("εν"))
+        {
+            type = "Preposition";
+            trans = "in, on, among";
+        }
+    }
+
+    void DestructAdverb()
+    {
+        type = "Adverb";
+        string p = NormalizeString(lexis);
+        if (p.Equals("ἅμα"))
+        {
+            trans = "together";
+            return;
+        }
+        if (p.Equals("αυθις"))
+        {
+            trans = "again";
+            return;
+        }
+        if (p.Equals("βραδεως"))
+        {
+            trans = "slowly";
+            return;
+        }
+        if (p.Equals("δευρο"))
+        {
+            trans = "here";
+            return;
+        }
+        if (p.Equals("επειτα"))
+        {
+            trans = "then";
+            return;
+        }
+        if (p.Equals("ετι"))
+        {
+            trans = "still";
+            return;
+        }
+        if (p.Equals("ηδη"))
+        {
+            trans = "already, now";
+            return;
+        }
+        if (p.Equals("μη"))
+        {
+            trans = "don't";
+            return;
+        }
+        if (p.Equals("μηκετι"))
+        {
+            trans = "no longer";
+            return;
+        }
+        if (p.Equals("οπισθεν"))
+        {
+            trans = "behind";
+            return;
+        }
+        if (p.Equals("ου"))
+        {
+            trans = "not";
+            return;
+        }
+        if (p.Equals("ουκ"))
+        {
+            trans = "not";
+            return;
+        }
+        if (p.Equals("ουκετι"))
+        {
+            trans = "no longer";
+            return;
+        }
+        if (p.Equals("ουτω"))
+        {
+            trans = "so, thus";
+            return;
+        }
+        if (p.Equals("ουχ"))
+        {
+            trans = "not";
+            return;
+        }
+        if (p.Equals("πολλακις"))
+        {
+            trans = "often";
+            return;
+        }
+        type = String.Empty;
+    }
+
+    void DestructDeclension(string wordType, Dictionary<string, string> d)
+    {
+        try
+        {
+            type = wordType;
+            string p = NormalizeString(lexis);
+            // Singular Feminine Nouns of the 1st Declension
+            if (p.EndsWith("ης"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Genitive";
+                number = "Singular";
+                gender = "Feminine";
+                return;
+            }
+            if (p.EndsWith("η"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                if (lexis.EndsWith("ή"))
+                {
+                    ptosis = "Nominative or vocative";
+                } else {
+                    ptosis = "Dative";
+                }
+                number = "Singular";
+                gender = "Feminine";
+                return;
+            }
+            if (p.EndsWith("ην"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Singular";
+                gender = "Feminine";
+                return;
+            }
+
+            // Plural Feminine Nouns of the 1st Declension
+            if (p.EndsWith("αι"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Nominative or vocative";
+                number = "Plural";
+                gender = "Feminine";
+                return;
+            }
+            if (p.EndsWith("αων"))
+            {
+                trans = d[p.Substring(0, p.Length - 3)];
+                ptosis = "Genitive";
+                number = "Plural";
+                gender = "Feminine";
+                return;
+            }
+            if (p.EndsWith("ησι") || p.EndsWith("ης"))
+            {
+                if (p.EndsWith("ησι"))
+                {
+                    trans = d[p.Substring(0, p.Length - 3)];
+                }
+                else if (p.EndsWith("ης"))
+                {
+                    trans = d[p.Substring(0, p.Length - 2)];
+                }
+                ptosis = "Dative";
+                number = "Plural";
+                gender = "Feminine";
+                return;
+            }
+            if (p.EndsWith("ας"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Plural";
+                gender = "Feminine";
+                return;
+            }
+
+            // Masculine Singular Nouns of the 1st Declension
+            if (p.EndsWith("ος") || p.EndsWith("ος"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Nominative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ου"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Genitive";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ω"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Dative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ον"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }  
+            if (p.EndsWith("ε"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Vocative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+
+
+            // Plural Masculine Nouns of the 1st Declension
+            if (p.EndsWith("οι"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Nominative or vocative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ων"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Genitive";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("οις") || p.EndsWith("ουσιν"))
+            {
+                if (p.EndsWith("οις"))
+                {
+                    trans = d[p.Substring(0, p.Length - 3)];
+                }
+                else if (p.EndsWith("ουσιν"))
+                {
+                    trans = d[p.Substring(0, p.Length - 5)];
+                }
+                ptosis = "Dative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ους"))
+            {
+                trans = d[p.Substring(0, p.Length - 3)];
+                ptosis = "Accusative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+
+            // Masculine Singular Nouns of the 2nd Declension
+            if (p.EndsWith("ος"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Nominative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ου"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Genitive";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ω"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Dative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ον"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ε"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Vocative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+
+            // Plural Masculine Nouns of the 2nd Declension
+            if (p.EndsWith("οι"))
+            {
+                ptosis = "Nominative or vocative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ων"))
+            {
+                ptosis = "Genitive";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("οις"))
+            {
+                ptosis = "Dative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ους"))
+            {
+                ptosis = "Accusative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("οι"))
+            {
+                ptosis = "Vocative";
+                number = "Plural";
+                gender = "Masculine";
+                return;
+            }
+
+            // Masculine Singular Nouns of the 3rd Declension
+/*            
+            if (p.EndsWith("ος"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Genitive";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ι"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Dative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ω"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Dative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+            if (p.EndsWith("ον"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }  
+            if (p.EndsWith("ε"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Vocative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
+*/
+            // Neuter Singular Nouns of the 3rd Declension
+            if (p.EndsWith("α"))
+            {
+                trans = d[p.Substring(0, p.Length - 1)];
+                ptosis = "Nominative, accusative or vocative";
+                number = "Singular";
+                gender = "Neuter";
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DestructureDeclension {wordType} '{lexis}' threw {ex.Message}");
+        }
+        type = String.Empty;
+    }
+
+    void DestructVerb()
+    {
+        try
+        {
+            // Singular Indicative Verbs
+            if (lexis.EndsWith("ω") || lexis.EndsWith("ῶ"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "First";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+            }
+            if (lexis.EndsWith("εις") || lexis.EndsWith("εῖς"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "Second";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+            }
+            if (lexis.EndsWith("ει") || lexis.EndsWith("εῖ"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "Third";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 2)];
+            }
+
+            // Plural Indicative Verbs
+            if (lexis.EndsWith("ετε"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Plural";
+                person = "Second";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+            }
+            if (lexis.EndsWith("ουσι") || lexis.EndsWith("ουσιν") || lexis.EndsWith("ουσῐ"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Plural";
+                person = "Third";
+                if (lexis.EndsWith("ουσιν")) {
+                    trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 5)];
+                } else {
+                    trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 4)];
+                }
+            }
+
+            // Singular Imperative Verbs
+            if (lexis.EndsWith("έ") || lexis.EndsWith("ὲ") || lexis.EndsWith("ε"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "First";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+            }
+
+            // Singular Infinitive Verbs
+            if (lexis.EndsWith("ειν"))
+            {
+                type = "Verb";
+                mood = "Infinitive";
+                number = "Singular";
+                person = "First";
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+            }
+
+            // Singular Indicative Verb to be
+            if (lexis.Equals("εἰμί"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "First";
+                trans = "I am";
+            }
+            if (lexis.EndsWith("εἶ"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "Second";
+                trans = "you are";
+            }
+            if (lexis.Equals("ἐστιν") || lexis.Equals("ἐστίν") || lexis.Equals("ἐστί"))
+            {
+                type = "Verb";
+                mood = "Indicative";
+                number = "Singular";
+                person = "Third";
+                trans = "he is";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DestructureVerb '{lexis}' threw {ex.Message}");
+        }
+    }
+
+    /* 
+    https://stackoverflow.com/questions/249087/how-do-i-remove-diacritics-accents-from-a-string-in-net
+    */
+    static string NormalizeString(string name)
+    {
+        String normalizedString = name.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            switch (CharUnicodeInfo.GetUnicodeCategory(c))
+            {
+                case UnicodeCategory.LowercaseLetter:
+                case UnicodeCategory.UppercaseLetter:
+                case UnicodeCategory.DecimalDigitNumber:
+                    stringBuilder.Append(c);
+                    break;
+                case UnicodeCategory.SpaceSeparator:
+                case UnicodeCategory.ConnectorPunctuation:
+                case UnicodeCategory.DashPunctuation:
+                    stringBuilder.Append('_');
+                    break;
+            }
+        }
+        string result = stringBuilder.ToString();
+        return String.Join("_", result.Split(new char[] { '_' }
+            , StringSplitOptions.RemoveEmptyEntries)); // remove duplicate underscores
+    }
+
+    string transFromNounStem(string lexis, int tailLength)
+    {
+        try
+        {
+            return stemNounGlossary[lexis.Substring(0, lexis.Length - tailLength).ToLower()];
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+}   

@@ -1,0 +1,27 @@
+αγρ:field
+ανθρωπ:man
+αροτρ:plow
+αυτουργ:farmer
+βο:ox
+δειπν:meal
+δενδρ:tree
+δεσποτ:master
+δουλ:slave
+ερμ:stone heap
+ηλι:sun
+καθευδ:sleep
+καταρατ:cursed creature
+κληρ:farm
+λιθ:stone
+μεν:stay
+οικ:house
+ολιγ:few,small
+ποδ:foot
+πον:labor
+σιτ:grain
+σπερμ:seed
+τουτ:this
+υι:son
+χρον:time
+φερ:carry
+φευ:alas
