@@ -29,15 +29,10 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'bin\Release\netstandard2.1\publish\_framework\_bin'
-    Contents: '*'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: 'wwwroot'
+    SourceFolder: 'bin\Release\netstandard2.1\publish'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+ '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
