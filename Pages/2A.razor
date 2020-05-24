@@ -1,8 +1,8 @@
 ﻿@page "/2A"
+@inject IJSRuntime jsRuntime
 
 <h1>2 Ο ΞΑΝΘΙΑΣ (α)</h1>
-
-<p>
+<p @ondblclick="DoubleClick">
  ὁ Διακιόπολις ἐκβαίνει ἐκ τοῦ οἴκου καὶ καλεῖ τὸν Ξανθίαν. 
  ὁ Ξανθίας δοῦλος ἐστιν, ἰσχυρὸς μὲν ἄνθρωπος, ῥᾴθυμος δέ· οὐ γὰρ πονεῖ, εἰ μὴ πάρεστιν ὁ Δικαιόπολις.
  νῦν δὲ καθεύδει ἐν τῷ οἴκῳ. 
@@ -14,4 +14,13 @@
 ἀλλὰ σπεῦδε· μικρὸς μὲν γάρ ἐστιν ὁ ἀγρός, μακρὸς δὲ ὁ πόνος”.
 </p>
 
-<Lexis />
+<Lexis @ref="child" />
+
+@code {
+    Lexis child;
+    private void DoubleClick()
+    {
+        child.lexis = ((IJSInProcessRuntime)jsRuntime).Invoke<string>("GetSelectedText");
+        child.Destructure();        
+    }
+}

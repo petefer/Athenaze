@@ -4,6 +4,7 @@
 ανδρει:brave
 αοκν:energetic
 δυνατ:possible
+ελευθερ:free
 ικαν:enough
 ισχυρ:strong
 καλ:beautiful

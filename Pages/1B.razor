@@ -1,8 +1,8 @@
 ﻿@page "/1B"
+@inject IJSRuntime jsRuntime
 
 <h1>1 Ο ΔΙΚΑΙΟΠΟΛΙΣ (β)</h1>
-
-<p>
+<p @ondblclick="DoubleClick">
  ὁ Δικαιόπολις ἐν τῷ ἀγρῷ πονεῖ· τὸν γὰρ ἀγρὸν σκάπτει.
  μακρός ἐστιν ὁ πόνος καὶ χαλεπός· τοὺς γὰρ λίθους ἐκ τοῦ ἀγροῦ φέρει.
  μέγαν λίθον αἴρει καὶ φέρει πρός τὸ ἕρμα.
@@ -14,4 +14,13 @@
  οὐκέτι οὖν πονεῖ ὁ Δικαιόπολις ἀλλὰ πρὸς τὸν οἶκον βαδίζει.
 </p>
 
-<Lexis />
+<Lexis @ref="child" />
+
+@code {
+    Lexis child;
+    private void DoubleClick()
+    {
+        child.lexis = ((IJSInProcessRuntime)jsRuntime).Invoke<string>("GetSelectedText");
+        child.Destructure();        
+    }
+}
