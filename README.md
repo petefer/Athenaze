@@ -11,7 +11,10 @@ test: dotnet run --pathbase=/athenaze
 
 ## Usage
 
+To start the app visit the web site:
 http://www.beyng.com/athenaze
+
+The app has a tab for each Greek text, the book has two texts per chapter. Double-click on a Greek word in the text to destructure it.
 
 ## Contributing
 Pull requests are welcome.
