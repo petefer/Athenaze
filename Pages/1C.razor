@@ -1,0 +1,20 @@
+﻿@page "/1C"
+@inject IJSRuntime jsRuntime
+
+<h1>1 Ο ΚΛΗΡΟΣ</h1>
+<p @ondblclick="DoubleClick">
+μακρός ἐστιν ὁ πόνος καὶ χαλεπός. ὁ δὲ αὐτουργὸς οὐκ ὀκνεῖ ἀλλ’ ἀιεὶ
+γεωργεῖ τὸν κλῆρον. καλός γάρ ἐστιν ὁ κλῆρος καὶ πολὺν σῖτον παρέχει.
+χαίρει οὖν ὁ ἄνθρωπος· ἰσχυρὸς γάρ ἐστι καὶ οὐ πολλάκις κάμνει.
+</p>
+
+<Lexis @ref="child" />
+
+@code {
+    Lexis child;
+    private void DoubleClick()
+    {
+        child.lexis = ((IJSInProcessRuntime)jsRuntime).Invoke<string>("GetSelectedText");
+        child.Destructure();        
+    }
+}

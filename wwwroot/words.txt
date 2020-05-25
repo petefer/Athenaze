@@ -16,6 +16,7 @@
 δευρο:here
 Δημητερα:Demeter
 Δικαιοπολις:Dicaeopolis
+Δικαιοπολεως:Dicaeopolis's
 εις:into, to, at
 Ζευ:Zeus
 ιδου:look!
@@ -25,6 +26,7 @@
 λιθος:stone
 μεν:on the one hand...
 νυν:now
+Ξανθια:Xanthias
 Ξανθιαν:Xanthias
 Ξανθιας:Xanthias
 ο:the
@@ -37,3 +39,4 @@
 τουτω:meanwhile
 φησι:says
 φησιν:says
+Φιλιππος:Phillip

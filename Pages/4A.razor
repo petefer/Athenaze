@@ -1,0 +1,20 @@
+﻿@page "/4A"
+@inject IJSRuntime jsRuntime
+
+<h1>4 ΠΑΡΑ ΤΗΙ ΚΡΗΝΗΙ (α)</h1>
+<p @ondblclick="DoubleClick">
+</p>
+<p @ondblclick="DoubleClick">
+</p>
+<p @ondblclick="DoubleClick">
+</p>
+<Lexis @ref="child" />
+
+@code {
+    Lexis child;
+    private void DoubleClick()
+    {
+        child.lexis = ((IJSInProcessRuntime)jsRuntime).Invoke<string>("GetSelectedText");
+        child.Destructure();        
+    }
+}

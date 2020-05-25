@@ -37,4 +37,5 @@
 φέρ:carry
 φησ:say
 φιλ:love
+φλυάρ:talk
 χαίρ:rejoice
