@@ -1,6 +1,8 @@
 αβαρες:weightless
 αγαγη:he might bring
 αγρω:field
+Αθηναιος:Athenian
+Αθηναις:Athens
 αλλ:but
 αλλα:but
 ανθρωποι:men
@@ -12,7 +14,10 @@
 γαρ:for
 δε:and, but
 δευρο:here
+Δημητερα:Demeter
+Δικαιοπολις:Dicaeopolis
 εις:into, to, at
+Ζευ:Zeus
 ιδου:look!
 ικανον:enough
 και:and, also, too
@@ -20,6 +25,8 @@
 λιθος:stone
 μεν:on the one hand...
 νυν:now
+Ξανθιαν:Xanthias
+Ξανθιας:Xanthias
 ο:the
 ουν:and so
 ουτω:so, thus

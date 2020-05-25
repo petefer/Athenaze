@@ -490,6 +490,11 @@
     {
         type = "Adverb";
         string p = NormalizeString(lexis);
+        if (p.Equals("ἀεί"))
+        {
+            trans = "always";
+            return;
+        }
         if (p.Equals("ἅμα"))
         {
             trans = "together";
@@ -611,7 +616,7 @@
             }
 
             // Plural Feminine Nouns of the 1st Declension
-            if (p.EndsWith("αι"))
+            if (p.EndsWith("αι") && p.Length > 3)
             {
                 trans = d[p.Substring(0, p.Length - 2)];
                 ptosis = "Nominative or vocative";
@@ -886,6 +891,7 @@
                 number = "Singular";
                 person = "First";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                return;
             }
             if (lexis.EndsWith("εις") || lexis.EndsWith("εῖς"))
             {
@@ -894,6 +900,7 @@
                 number = "Singular";
                 person = "Second";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+                return;
             }
             if (lexis.EndsWith("ει") || lexis.EndsWith("εῖ"))
             {
@@ -902,6 +909,7 @@
                 number = "Singular";
                 person = "Third";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 2)];
+                return;
             }
 
             // Plural Indicative Verbs
@@ -912,6 +920,7 @@
                 number = "Plural";
                 person = "Second";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+                return;
             }
             if (lexis.EndsWith("ουσι") || lexis.EndsWith("ουσιν") || lexis.EndsWith("ουσῐ"))
             {
@@ -924,6 +933,7 @@
                 } else {
                     trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 4)];
                 }
+                return;
             }
 
             // Singular Imperative Verbs
@@ -934,6 +944,7 @@
                 number = "Singular";
                 person = "First";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                return;
             }
 
             // Singular Infinitive Verbs
@@ -944,6 +955,7 @@
                 number = "Singular";
                 person = "First";
                 trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                return;
             }
 
             // Singular Indicative Verb to be
@@ -954,6 +966,7 @@
                 number = "Singular";
                 person = "First";
                 trans = "I am";
+                return;
             }
             if (lexis.EndsWith("εἶ"))
             {
@@ -962,14 +975,17 @@
                 number = "Singular";
                 person = "Second";
                 trans = "you are";
+                return;
             }
-            if (lexis.Equals("ἐστιν") || lexis.Equals("ἐστίν") || lexis.Equals("ἐστί"))
+            if (lexis.Equals("ἐστιν") || lexis.Equals("ἐστίν") 
+                || lexis.Equals("ἐστι") || lexis.Equals("ἐστί"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "Third";
                 trans = "he is";
+                return;
             }
         }
         catch (Exception ex)

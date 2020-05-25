@@ -7,6 +7,7 @@
 βλέπ:look, see
 βοηθ:help
 βοήθ:help
+γεωργ:farm
 εἰσάγ:lead in, take in
 εἰσβαίν:go in, embark
 ἐκβαίν:step out
