@@ -29,11 +29,11 @@
 πίπτ:fall
 πον:work
 πταί:stumble
-στενάζ:groan
-σπεύδ:hurry
 προσάπτ:attach
 προσχωρ:go towards, approach
 σπεῦδ:hurry
+σπεύδ:hurry
+στενάζ:groan
 φέρ:carry
 φησ:say
 φιλ:love

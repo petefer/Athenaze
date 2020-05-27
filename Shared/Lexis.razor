@@ -954,7 +954,7 @@
                 mood = "Infinitive";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
                 return;
             }
 
@@ -968,7 +968,7 @@
                 trans = "I am";
                 return;
             }
-            if (lexis.EndsWith("εἶ"))
+            if (lexis.Equals("εἶ"))
             {
                 type = "Verb";
                 mood = "Indicative";
@@ -990,7 +990,7 @@
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"DestructureVerb '{lexis}' threw {ex.Message}");
+            Console.WriteLine($"DestructVerb '{lexis}' threw {ex.Message}");
         }
     }
 
