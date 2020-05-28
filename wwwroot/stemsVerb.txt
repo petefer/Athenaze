@@ -1,41 +1,39 @@
-ἄγ:lead, take
-αἴρ:lift
-ἀροτρεύ:plow
-βαδίζ:walk, go
-βάδιζ:walk, go
-βαίν:step, walk, go
-βλέπ:look, see
+αγ:lead, take
+αιρ:lift
+αροτρευ:plow
+βαδιζ:walk, go
+βαιν:step, walk, go
+βλεπ:look, see
 βοηθ:help
-βοήθ:help
 γεωργ:farm
-εἰσάγ:lead in, take in
-εἰσβαίν:go in, embark
-ἐκβαίν:step out
-ἐλαύν:drive
-ἐλθ:come
-ἕλκ:drag
-καθεύδ:sleep
-καθίζ:sit
+εισαγ:lead in, take in
+εισβαιν:go in, embark
+εκβαιν:step out
+ελαυν:drive
+ελθ:come
+ελκ:drag
+καθευδ:sleep
+καθιζ:sit
 καλ:call
-καταβάλλ:drop
-λάμβαν:take
-λαμβάν:take
-λέγ:say, tell, speak
-λείπ:leave
-λύ:loosen
-μέν:stay, wait
-οἰκ:live, dwell
-παρέχ:provide
-πίπτ:fall
+καταβαλλ:drop
+κεντ:goad
+λαμβαν:take
+λεγ:say, tell, speak
+λειπ:leave
+λυ:loosen
+μεν:stay, wait
+οικ:live, dwell
+παρεχ:provide
+πιπτ:fall
 πον:work
-πταί:stumble
-προσάπτ:attach
+πται:stumble
+προσαπτ:attach
 προσχωρ:go towards, approach
-σπεῦδ:hurry
-σπεύδ:hurry
-στενάζ:groan
-φέρ:carry
+σπειρ:sow
+σπευδ:hurry
+στεναζ:groan
+φερ:carry
 φησ:say
 φιλ:love
-φλυάρ:talk
-χαίρ:rejoice
+φλυαρ:talk
+χαιρ:rejoice

@@ -484,18 +484,23 @@
             type = "Preposition";
             trans = "in, on, among";
         }
+        if (p.Equals("μετα"))
+        {
+            type = "Preposition";
+            trans = "after";
+        }
     }
 
     void DestructAdverb()
     {
         type = "Adverb";
         string p = NormalizeString(lexis);
-        if (p.Equals("ἀεί"))
+        if (p.Equals("αει"))
         {
             trans = "always";
             return;
         }
-        if (p.Equals("ἅμα"))
+        if (p.Equals("αμα"))
         {
             trans = "together";
             return;
@@ -688,7 +693,7 @@
                 number = "Singular";
                 gender = "Masculine";
                 return;
-            }  
+            }
             if (p.EndsWith("ε"))
             {
                 trans = d[p.Substring(0, p.Length - 1)];
@@ -820,48 +825,48 @@
             }
 
             // Masculine Singular Nouns of the 3rd Declension
-/*            
-            if (p.EndsWith("ος"))
-            {
-                trans = d[p.Substring(0, p.Length - 2)];
-                ptosis = "Genitive";
-                number = "Singular";
-                gender = "Masculine";
-                return;
-            }
-            if (p.EndsWith("ι"))
-            {
-                trans = d[p.Substring(0, p.Length - 1)];
-                ptosis = "Dative";
-                number = "Singular";
-                gender = "Masculine";
-                return;
-            }
-            if (p.EndsWith("ω"))
-            {
-                trans = d[p.Substring(0, p.Length - 1)];
-                ptosis = "Dative";
-                number = "Singular";
-                gender = "Masculine";
-                return;
-            }
-            if (p.EndsWith("ον"))
-            {
-                trans = d[p.Substring(0, p.Length - 2)];
-                ptosis = "Accusative";
-                number = "Singular";
-                gender = "Masculine";
-                return;
-            }  
-            if (p.EndsWith("ε"))
-            {
-                trans = d[p.Substring(0, p.Length - 1)];
-                ptosis = "Vocative";
-                number = "Singular";
-                gender = "Masculine";
-                return;
-            }
-*/
+            /*            
+                        if (p.EndsWith("ος"))
+                        {
+                            trans = d[p.Substring(0, p.Length - 2)];
+                            ptosis = "Genitive";
+                            number = "Singular";
+                            gender = "Masculine";
+                            return;
+                        }
+                        if (p.EndsWith("ι"))
+                        {
+                            trans = d[p.Substring(0, p.Length - 1)];
+                            ptosis = "Dative";
+                            number = "Singular";
+                            gender = "Masculine";
+                            return;
+                        }
+                        if (p.EndsWith("ω"))
+                        {
+                            trans = d[p.Substring(0, p.Length - 1)];
+                            ptosis = "Dative";
+                            number = "Singular";
+                            gender = "Masculine";
+                            return;
+                        }
+                        if (p.EndsWith("ον"))
+                        {
+                            trans = d[p.Substring(0, p.Length - 2)];
+                            ptosis = "Accusative";
+                            number = "Singular";
+                            gender = "Masculine";
+                            return;
+                        }  
+                        if (p.EndsWith("ε"))
+                        {
+                            trans = d[p.Substring(0, p.Length - 1)];
+                            ptosis = "Vocative";
+                            number = "Singular";
+                            gender = "Masculine";
+                            return;
+                        }
+            */
             // Neuter Singular Nouns of the 3rd Declension
             if (p.EndsWith("α"))
             {
@@ -883,83 +888,89 @@
     {
         try
         {
+            string p = NormalizeString(lexis);
             // Singular Indicative Verbs
-            if (lexis.EndsWith("ω") || lexis.EndsWith("ῶ"))
+            Console.WriteLine($"DestructVerb '{lexis}' 1");
+            if (p.EndsWith("ω"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 return;
             }
-            if (lexis.EndsWith("εις") || lexis.EndsWith("εῖς"))
+            if (p.EndsWith("εις"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "Second";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
-            if (lexis.EndsWith("ει") || lexis.EndsWith("εῖ"))
+            Console.WriteLine($"DestructVerb '{p}' 2");
+            if (p.EndsWith("ει"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "Third";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 2)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 2)];
                 return;
             }
 
             // Plural Indicative Verbs
-            if (lexis.EndsWith("ετε"))
+            Console.WriteLine($"DestructVerb '{lexis}' 3");
+            if (p.EndsWith("ετε"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Plural";
                 person = "Second";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
-            if (lexis.EndsWith("ουσι") || lexis.EndsWith("ουσιν") || lexis.EndsWith("ουσῐ"))
+            if (p.EndsWith("ουσι") || p.EndsWith("ουσιν"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Plural";
                 person = "Third";
                 if (lexis.EndsWith("ουσιν")) {
-                    trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 5)];
+                    trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
                 } else {
-                    trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 4)];
+                    trans = stemVerbGlossary[p.Substring(0, p.Length - 4)];
                 }
                 return;
             }
+            Console.WriteLine($"DestructVerb '{lexis}' 4");
 
             // Singular Imperative Verbs
-            if (lexis.EndsWith("έ") || lexis.EndsWith("ὲ") || lexis.EndsWith("ε"))
+            if (p.EndsWith("ε"))
             {
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 1)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 return;
             }
 
             // Singular Infinitive Verbs
-            if (lexis.EndsWith("ειν"))
+            if (p.EndsWith("ειν"))
             {
                 type = "Verb";
                 mood = "Infinitive";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[lexis.Substring(0, lexis.Length - 3)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
+            Console.WriteLine($"DestructVerb '{lexis}' 5");
 
             // Singular Indicative Verb to be
-            if (lexis.Equals("εἰμί"))
+            if (p.Equals("ειμι"))
             {
                 type = "Verb";
                 mood = "Indicative";
@@ -968,7 +979,7 @@
                 trans = "I am";
                 return;
             }
-            if (lexis.Equals("εἶ"))
+            if (p.Equals("ει"))
             {
                 type = "Verb";
                 mood = "Indicative";
@@ -977,8 +988,7 @@
                 trans = "you are";
                 return;
             }
-            if (lexis.Equals("ἐστιν") || lexis.Equals("ἐστίν") 
-                || lexis.Equals("ἐστι") || lexis.Equals("ἐστί"))
+            if (p.Equals("εστιν") || p.Equals("εστι"))
             {
                 type = "Verb";
                 mood = "Indicative";

@@ -32,8 +32,9 @@
 ο:the
 ουν:and so
 ουτω:so, thus
+παι:child
 παις:child
-πατερα:father
+πατηρ:father
 προς:towards
 ταις:who, which, that
 τουτω:meanwhile
