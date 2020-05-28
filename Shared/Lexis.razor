@@ -147,6 +147,10 @@
 
     void DestructPronoun()
     {
+        if (lexis.Length > 5)
+        {
+            return;
+        }
         string p = NormalizeString(lexis);
         if (p.Equals("αυτον"))
         {
@@ -291,6 +295,10 @@
 
     void DestructArticle()
     {
+        if (lexis.Length > 4)
+        {
+            return;
+        }
         string p = NormalizeString(lexis);
         if (p.Equals("ο"))
         {
@@ -448,16 +456,38 @@
 
     void DestructParticle()
     {
+        if (lexis.Length != 3)
+        {
+            return;
+        }
         string p = NormalizeString(lexis);
         if (p.Equals("ουν"))
         {
             type = "Particle";
             trans = "and so";
+        }        
+    }
+
+    void DestructInterjection()
+    {
+        if (lexis.Length > 1)
+        {
+            return;
         }
+        string p = NormalizeString(lexis);
+        if (lexis.Equals("ὦ"))
+        {
+            type = "Interjection";
+            trans = "O";
+        }        
     }
 
     void DestructConjunction()
     {
+        if (lexis.Length > 4)
+        {
+            return;
+        }
         string p = NormalizeString(lexis);
         if (p.Equals("δε"))
         {
@@ -478,6 +508,10 @@
 
     void DestructPreposition()
     {
+        if (lexis.Length > 4)
+        {
+            return;
+        }
         string p = NormalizeString(lexis);
         if (p.Equals("εν"))
         {
@@ -891,7 +925,7 @@
             string p = NormalizeString(lexis);
             // Singular Indicative Verbs
             Console.WriteLine($"DestructVerb '{lexis}' 1");
-            if (p.EndsWith("ω"))
+            if (p.Length > 1 && p.EndsWith("ω"))
             {
                 type = "Verb";
                 mood = "Indicative";

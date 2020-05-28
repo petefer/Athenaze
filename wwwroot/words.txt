@@ -22,8 +22,7 @@
 ιδου:look!
 ικανον:enough
 και:and, also, too
-λιθον:stone
-λιθος:stone
+μαστιγια:jailbird
 μεν:on the one hand...
 νυν:now
 Ξανθια:Xanthias

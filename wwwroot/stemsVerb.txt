@@ -9,6 +9,7 @@
 εισαγ:lead in, take in
 εισβαιν:go in, embark
 εκβαιν:step out
+εκφερ:carry out
 ελαυν:drive
 ελθ:come
 ελκ:drag
