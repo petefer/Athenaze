@@ -5,6 +5,7 @@
 Αθηναις:Athens
 αλλ:but
 αλλα:but
+ανδρα:man
 ανθρωποι:men
 ανοητε:fool
 αροτρευειν:to plow
@@ -12,6 +13,7 @@
 βοες:oxen (nominative/vocative plural; irregular declension)
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
+γυναῖκες:women
 δε:and, but
 δευρο:here
 Δημητερα:Demeter
@@ -33,10 +35,13 @@
 ουτω:so, thus
 παι:child
 παις:child
+πάρεισι:present
 πατηρ:father
 προς:towards
 ταις:who, which, that
 τουτω:meanwhile
+υδρι:water jar
+υστεραια:next day
 φησι:says
 φησιν:says
 Φιλιππος:Phillip

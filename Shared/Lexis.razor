@@ -955,7 +955,6 @@
             }
 
             // Plural Indicative Verbs
-            Console.WriteLine($"DestructVerb '{lexis}' 3");
             if (p.EndsWith("ετε"))
             {
                 type = "Verb";
@@ -971,9 +970,11 @@
                 mood = "Indicative";
                 number = "Plural";
                 person = "Third";
-                if (lexis.EndsWith("ουσιν")) {
+                if (p.EndsWith("ουσιν")) {
+                    Console.WriteLine($"DestructVerb '{lexis}' 3");
                     trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
                 } else {
+                    Console.WriteLine($"DestructVerb '{lexis}' 3.5");
                     trans = stemVerbGlossary[p.Substring(0, p.Length - 4)];
                 }
                 return;
@@ -1029,6 +1030,15 @@
                 number = "Singular";
                 person = "Third";
                 trans = "he is";
+                return;
+            }
+            if (p.Equals("ισθι"))
+            {
+                type = "Verb";
+                mood = "Imperative";
+                number = "Singular";
+                person = "Second";
+                trans = "be!";
                 return;
             }
         }
