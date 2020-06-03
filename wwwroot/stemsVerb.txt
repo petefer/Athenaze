@@ -30,6 +30,7 @@
 πται:stumble
 προσαπτ:attach
 προσχωρ:go towards, approach
+σκαπτ:dig
 σπειρ:sow
 σπευδ:hurry
 στεναζ:groan

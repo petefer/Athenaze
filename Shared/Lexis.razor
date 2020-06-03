@@ -513,15 +513,20 @@
             return;
         }
         string p = NormalizeString(lexis);
-        if (p.Equals("εν"))
-        {
-            type = "Preposition";
-            trans = "in, on, among";
-        }
         if (p.Equals("μετα"))
         {
             type = "Preposition";
             trans = "after";
+        }
+        if (p.Equals("δια"))
+        {
+            type = "Preposition";
+            trans = "through";
+        }
+        if (p.Equals("εν"))
+        {
+            type = "Preposition";
+            trans = "in, on, among";
         }
     }
 
@@ -612,6 +617,11 @@
         if (p.Equals("πολλακις"))
         {
             trans = "often";
+            return;
+        }
+        if (p.Equals("τί"))
+        {
+            trans = "why?";
             return;
         }
         type = String.Empty;
@@ -737,6 +747,14 @@
                 return;
             }
 
+            if (p.EndsWith("υν"))
+            {
+                trans = d[p.Substring(0, p.Length - 2)];
+                ptosis = "Accusative";
+                number = "Singular";
+                gender = "Masculine";
+                return;
+            }
 
             // Plural Masculine Nouns of the 1st Declension
             if (p.EndsWith("οι"))
@@ -927,56 +945,54 @@
             Console.WriteLine($"DestructVerb '{lexis}' 1");
             if (p.Length > 1 && p.EndsWith("ω"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 return;
             }
             if (p.EndsWith("εις"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "Second";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
             Console.WriteLine($"DestructVerb '{p}' 2");
             if (p.EndsWith("ει"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 2)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "Third";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 2)];
                 return;
             }
 
             // Plural Indicative Verbs
             if (p.EndsWith("ετε"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Plural";
                 person = "Second";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
             if (p.EndsWith("ουσι") || p.EndsWith("ουσιν"))
             {
+                if (p.EndsWith("ουσιν")) {
+                    trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
+                } else {
+                    trans = stemVerbGlossary[p.Substring(0, p.Length - 4)];
+                }
                 type = "Verb";
                 mood = "Indicative";
                 number = "Plural";
                 person = "Third";
-                if (p.EndsWith("ουσιν")) {
-                    Console.WriteLine($"DestructVerb '{lexis}' 3");
-                    trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
-                } else {
-                    Console.WriteLine($"DestructVerb '{lexis}' 3.5");
-                    trans = stemVerbGlossary[p.Substring(0, p.Length - 4)];
-                }
                 return;
             }
             Console.WriteLine($"DestructVerb '{lexis}' 4");
@@ -984,22 +1000,22 @@
             // Singular Imperative Verbs
             if (p.EndsWith("ε"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 1)];
                 return;
             }
 
             // Singular Infinitive Verbs
             if (p.EndsWith("ειν"))
             {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 type = "Verb";
                 mood = "Infinitive";
                 number = "Singular";
                 person = "First";
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
                 return;
             }
             Console.WriteLine($"DestructVerb '{lexis}' 5");

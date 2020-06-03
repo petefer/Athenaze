@@ -10,10 +10,11 @@
 ανοητε:fool
 αροτρευειν:to plow
 αροτρον:plow
+ατεραντος:endless
 βοες:oxen (nominative/vocative plural; irregular declension)
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
-γυναῖκες:women
+γυναικες:women
 δε:and, but
 δευρο:here
 Δημητερα:Demeter
@@ -35,13 +36,14 @@
 ουτω:so, thus
 παι:child
 παις:child
-πάρεισι:present
+παρεισι:present
 πατηρ:father
 προς:towards
 ταις:who, which, that
 τουτω:meanwhile
 υδρι:water jar
 υστεραια:next day
+φευ:alas!
 φησι:says
 φησιν:says
 Φιλιππος:Phillip
