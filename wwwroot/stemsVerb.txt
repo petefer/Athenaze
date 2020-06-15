@@ -1,5 +1,6 @@
 αγ:lead, take
 αιρ:lift
+ανατελλ:rise
 αροτρευ:plow
 βαδιζ:walk, go
 βαιν:step, walk, go

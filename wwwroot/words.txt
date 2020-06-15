@@ -15,6 +15,7 @@
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
 γυναικες:women
+γυνη:woman
 δε:and, but
 δευρο:here
 Δημητερα:Demeter

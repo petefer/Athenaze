@@ -499,7 +499,7 @@
             type = "Conjunction";
             trans = "and, also";
         }
-        if (p.Equals("ἐπεὶ"))
+        if (p.Equals("επει"))
         {
             type = "Conjunction";
             trans = "when";
@@ -733,9 +733,9 @@
             if (p.EndsWith("ον"))
             {
                 trans = d[p.Substring(0, p.Length - 2)];
-                ptosis = "Accusative";
+                ptosis = "Accusative or Nominative or Vocative";
                 number = "Singular";
-                gender = "Masculine";
+                gender = "Masculine or Neuter";
                 return;
             }
             if (p.EndsWith("ε"))

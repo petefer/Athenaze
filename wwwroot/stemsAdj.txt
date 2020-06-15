@@ -12,6 +12,7 @@
 μεγ:big
 μικρ:small
 ραθυμ:lazy
+πρωτ:first
 πολ:many
 πολλ:many
 σκαι:clumsy
