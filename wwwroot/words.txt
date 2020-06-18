@@ -1,8 +1,10 @@
 αβαρες:weightless
 αγαγη:he might bring
 αγρω:field
+ἀγῶνας:contests
 Αθηναιος:Athenian
 Αθηναις:Athens
+ἄκουε:hear!
 αλλ:but
 αλλα:but
 ανδρα:man
@@ -21,6 +23,7 @@
 Δημητερα:Demeter
 Δικαιοπολις:Dicaeopolis
 Δικαιοπολεως:Dicaeopolis's
+δραματα:plays
 εις:into, to, at
 Ζευ:Zeus
 ιδου:look!
@@ -42,7 +45,6 @@
 προς:towards
 ταις:who, which, that
 τουτω:meanwhile
-υδρι:water jar
 υστεραια:next day
 φευ:alas!
 φησι:says

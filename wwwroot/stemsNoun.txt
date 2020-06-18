@@ -21,6 +21,7 @@
 σιτ:grain
 σπερμ:seed
 τουτ:this
+υδρι:water jar
 υι:son
 χρον:time
 φερ:carry
