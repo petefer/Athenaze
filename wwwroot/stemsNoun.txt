@@ -7,6 +7,7 @@
 δενδρ:tree
 δεσποτ:master
 δουλ:slave
+εορτ:feast
 ερμ:stone heap
 ηλι:sun
 καθευδ:sleep

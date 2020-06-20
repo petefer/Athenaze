@@ -147,7 +147,7 @@
 
     void DestructPronoun()
     {
-        if (lexis.Length > 5)
+        if (lexis.Length > 7)
         {
             return;
         }
@@ -225,7 +225,20 @@
             person = "First";
             trans = "me";
         }
-
+        if (p.Equals("ημας"))
+        {
+            type = "Pronoun";
+            trans = "we two";
+        }
+        if (p.Equals("σεαυτον"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "Second";
+            gender = "feminine";
+            trans = "yourself";
+        }
         if (p.Equals("συ"))
         {
             type = "Pronoun";
@@ -474,7 +487,6 @@
         {
             return;
         }
-        string p = NormalizeString(lexis);
         if (lexis.Equals("ὦ"))
         {
             type = "Interjection";
