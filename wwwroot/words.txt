@@ -1,7 +1,7 @@
 αβαρες:weightless
 αγαγη:he might bring
 αγρω:field
-ἀγῶνας:contests
+αγωνας:contests
 Αθηναιος:Athenian
 Αθηναις:Athens
 ἄκουε:hear!
@@ -12,11 +12,13 @@
 ανοητε:fool
 αροτρευειν:to plow
 αροτρον:plow
+αστυ:city
 ατεραντος:endless
 βοες:oxen (nominative/vocative plural; irregular declension)
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
-γυναικες:women
+γυναικας:women, accusative
+γυναικες:women, nominative/vocative
 γυνη:woman
 δε:and, but
 δευρο:here
@@ -24,6 +26,8 @@
 Δικαιοπολις:Dicaeopolis
 Δικαιοπολεως:Dicaeopolis's
 δραματα:plays
+εθελεις:you will
+εθελουμεν:we will
 εις:into, to, at
 επαιρε:lift
 εχομεν:we have
@@ -33,7 +37,10 @@
 ικανον:enough
 και:and, also, too
 μαστιγια:jailbird
+Μέλιττα:Melissa
 μεν:on the one hand...
+Μυρρινη:Myrtle
+ναι:yes
 νυν:now
 Ξανθια:Xanthias
 Ξανθιαν:Xanthias
@@ -45,6 +52,7 @@
 παις:child
 παρεισι:present
 πατηρ:father
+πληρουσιν:are filling
 προς:towards
 ταις:who, which, that
 τουτω:meanwhile
@@ -53,3 +61,4 @@
 φησι:says
 φησιν:says
 Φιλιππος:Phillip
+χορους:dances

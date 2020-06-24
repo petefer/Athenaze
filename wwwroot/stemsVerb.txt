@@ -28,6 +28,7 @@
 οικ:live, dwell
 παρεχ:provide
 πιπτ:fall
+πληρ:fill
 πον:work
 πται:stumble
 προσαπτ:attach

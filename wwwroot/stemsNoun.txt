@@ -13,6 +13,7 @@
 καθευδ:sleep
 καταρατ:cursed creature
 κληρ:farm
+κρην:spring
 λιθ:stone
 μεν:stay
 οικ:house
@@ -27,3 +28,4 @@
 χρον:time
 φερ:carry
 φευ:alas
+φιλ:female friend
