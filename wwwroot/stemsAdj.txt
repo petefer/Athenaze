@@ -11,6 +11,8 @@
 καλ:beautiful
 μακρ:large
 μεγ:big
+μεγα:big
+μεγαλ:big
 μικρ:small
 ραθυμ:lazy
 πρωτ:first

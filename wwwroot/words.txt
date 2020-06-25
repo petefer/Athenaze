@@ -2,6 +2,7 @@
 αγαγη:he might bring
 αγρω:field
 αγωνας:contests
+Ἀθηναῖοι:Athenians
 Αθηναιος:Athenian
 Αθηναις:Athens
 ἄκουε:hear!
@@ -17,14 +18,15 @@
 βοες:oxen (nominative/vocative plural; irregular declension)
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
-γυναικας:women, accusative
-γυναικες:women, nominative/vocative
+γυναικας:women (accusative)
+γυναικες:women (nominative/vocative)
 γυνη:woman
 δε:and, but
 δευρο:here
 Δημητερα:Demeter
 Δικαιοπολις:Dicaeopolis
 Δικαιοπολεως:Dicaeopolis's
+Διονυσια:festival of Dionysus
 δραματα:plays
 εθελεις:you will
 εθελουμεν:we will
@@ -62,3 +64,4 @@
 φησιν:says
 Φιλιππος:Phillip
 χορους:dances
+ωστε:so that

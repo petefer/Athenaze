@@ -29,6 +29,7 @@
 παρεχ:provide
 πιπτ:fall
 πληρ:fill
+ποι:create
 πον:work
 πται:stumble
 προσαπτ:attach
