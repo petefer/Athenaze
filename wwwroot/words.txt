@@ -6,8 +6,6 @@
 Αθηναιος:Athenian
 Αθηναις:Athens
 ἄκουε:hear!
-αλλ:but
-αλλα:but
 ανδρα:man
 ανθρωποι:men
 ανοητε:fool
@@ -52,7 +50,8 @@
 ουτω:so, thus
 παι:child
 παις:child
-παρεισι:present
+παρεισι:they are present
+παρεστιν:he is present
 πατηρ:father
 πληρουσιν:are filling
 προς:towards

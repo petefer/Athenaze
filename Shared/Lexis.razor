@@ -515,6 +515,11 @@
             return;
         }
         string p = NormalizeString(lexis);
+        if (p.Equals("αλλα") || p.Equals("αλλ"))
+        {
+            type = "Conjunction";
+            trans = "but";
+        }
         if (p.Equals("δε"))
         {
             type = "Conjunction";

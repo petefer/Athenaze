@@ -9,6 +9,7 @@
 γεωργ:farm
 εισαγ:lead in, take in
 εισβαιν:go in, embark
+εκ:have come
 εκβαιν:step out
 εκφερ:carry out
 ελαυν:drive
