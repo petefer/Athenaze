@@ -1,5 +1,6 @@
 αγγελ:messenger
 αγρ:field
+ανερ:man, husband
 ανθρωπ:man
 αροτρ:plow
 αυτουργ:farmer
@@ -15,6 +16,7 @@
 καταρατ:cursed creature
 κληρ:farm
 κρην:spring
+κορ:girl
 λιθ:stone
 μεν:stay
 οικ:house

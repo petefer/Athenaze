@@ -29,6 +29,7 @@
 εθελεις:you will
 εθελουμεν:we will
 εις:into, to, at
+εισιν:is
 επαιρε:lift
 εχομεν:we have
 Ζευ:Zeus

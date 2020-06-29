@@ -338,6 +338,14 @@
             gender = "Feminine";
             trans = "the";
         }
+        if (p.Equals("η"))
+        {
+            type = "Article";
+            mood = "Vocative";
+            number = "Singular";
+            gender = "Feminine";
+            trans = "the";
+        }
         if (p.Equals("το"))
         {
             type = "Article";
@@ -603,6 +611,11 @@
         if (p.Equals("ηδη"))
         {
             trans = "already, now";
+            return;
+        }
+        if (p.Equals("μαλα"))
+        {
+            trans = "very";
             return;
         }
         if (p.Equals("μη"))
@@ -1004,6 +1017,15 @@
             }
 
             // Plural Indicative Verbs
+            if (p.EndsWith("ομεν"))
+            {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
+                type = "Verb";
+                mood = "Indicative";
+                number = "Plural";
+                person = "First";
+                return;
+            }
             if (p.EndsWith("ετε"))
             {
                 trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
