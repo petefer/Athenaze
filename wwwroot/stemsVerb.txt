@@ -1,5 +1,6 @@
 αγ:lead, take
 αιρ:lift
+ακου:hear
 ανατελλ:rise
 αροτρευ:plow
 βαδιζ:walk, go
@@ -7,6 +8,7 @@
 βλεπ:look, see
 βοηθ:help
 γεωργ:farm
+εθελ: be willing, wish
 εισαγ:lead in, take in
 εισβαιν:go in, embark
 εκ:have come
@@ -15,6 +17,7 @@
 ελαυν:drive
 ελθ:come
 ελκ:drag
+ηκ:have come
 θεωρ:observe
 καθευδ:sleep
 καθιζ:sit

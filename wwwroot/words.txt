@@ -2,7 +2,7 @@
 αγαγη:he might bring
 αγρω:field
 αγωνας:contests
-Ἀθηναῖοι:Athenians
+Αθηναιοι:Athenians
 Αθηναιος:Athenian
 Αθηναις:Athens
 ἄκουε:hear!

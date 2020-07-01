@@ -152,12 +152,22 @@
             return;
         }
         string p = NormalizeString(lexis);
+        if (p.Equals("αυτην"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "Third";
+            gender = "Feminine";
+            trans = "him, it";
+        }
         if (p.Equals("αυτον"))
         {
             type = "Pronoun";
             mood = "Accusative";
             number = "Singular";
-            person = "First";
+            person = "Third";
+            gender = "Masculine";
             trans = "him, it";
         }
         if (p.Equals("εγω"))
@@ -338,7 +348,7 @@
             gender = "Feminine";
             trans = "the";
         }
-        if (p.Equals("η"))
+        if (p.Equals("ω"))
         {
             type = "Article";
             mood = "Vocative";
@@ -496,7 +506,7 @@
             type = "Particle";
             trans = "and so";
         }        
-        if (p.Equals("αρα"))
+        if (p.Equals("αρ") || p.Equals("αρα"))
         {
             type = "Particle";
             trans = "introduces question";
@@ -616,6 +626,11 @@
         if (p.Equals("μαλα"))
         {
             trans = "very";
+            return;
+        }
+        if (p.Equals("μαλιστα"))
+        {
+            trans = "most";
             return;
         }
         if (p.Equals("μη"))
