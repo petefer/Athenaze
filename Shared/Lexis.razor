@@ -543,15 +543,20 @@
             type = "Conjunction";
             trans = "but, and";
         }
-        if (p.Equals("τε"))
-        {
-            type = "Conjunction";
-            trans = "and, also";
-        }
         if (p.Equals("επει"))
         {
             type = "Conjunction";
             trans = "when";
+        }
+        if (p.Equals("οτι"))
+        {
+            type = "Conjunction";
+            trans = "that";
+        }
+        if (p.Equals("τε"))
+        {
+            type = "Conjunction";
+            trans = "and, also";
         }
     }
 
@@ -562,10 +567,10 @@
             return;
         }
         string p = NormalizeString(lexis);
-        if (p.Equals("μετα"))
+        if (p.Equals("απο"))
         {
             type = "Preposition";
-            trans = "after";
+            trans = "from";
         }
         if (p.Equals("δια"))
         {
@@ -576,6 +581,11 @@
         {
             type = "Preposition";
             trans = "in, on, among";
+        }
+        if (p.Equals("μετα"))
+        {
+            type = "Preposition";
+            trans = "after";
         }
     }
 
@@ -676,6 +686,11 @@
         if (p.Equals("πολλακις"))
         {
             trans = "often";
+            return;
+        }
+        if (p.Equals("ταχέως"))
+        {
+            trans = "quickly";
             return;
         }
         if (p.Equals("τι"))
@@ -1032,13 +1047,22 @@
             }
 
             // Plural Indicative Verbs
-            if (p.EndsWith("ομεν"))
+            if (p.EndsWith("ουμεν"))
             {
-                trans = stemVerbGlossary[p.Substring(0, p.Length - 3)];
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
                 type = "Verb";
                 mood = "Indicative";
                 number = "Plural";
                 person = "First";
+                return;
+            }
+            if (p.EndsWith("ουτε"))
+            {
+                trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
+                type = "Verb";
+                mood = "Indicative";
+                number = "Plural";
+                person = "Second";
                 return;
             }
             if (p.EndsWith("ετε"))

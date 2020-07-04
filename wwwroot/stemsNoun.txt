@@ -3,6 +3,7 @@
 ανερ:man, husband
 ανθρωπ:man
 αροτρ:plow
+αστ:city
 αυτουργ:farmer
 βο:ox
 δειπν:meal
