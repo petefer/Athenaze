@@ -13,23 +13,30 @@
 εορτ:feast
 ερμ:stone heap
 ηλι:sun
+θορυβ:uproar
 καθευδ:sleep
 καταρατ:cursed creature
+κητω:garden
 κληρ:farm
 κρην:spring
 κορ:girl
 λιθ:stone
+λυκ:wolf
 μεν:stay
 οικ:house
 ολιγ:few,small
+ορ:hill
+παππ:grandfather
 ποδ:foot
 πον:labor
+προβατ:sheep
 σιτ:grain
 σπερμ:seed
 τουτ:this
 υδρι:water jar
 υι:son
 χρον:time
+ψοφ:noise
 φερ:carry
 φευ:alas
 φιλ:female friend

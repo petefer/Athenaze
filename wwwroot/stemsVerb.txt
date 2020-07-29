@@ -1,13 +1,17 @@
 αγ:lead, take
 αιρ:lift
 ακου:hear
+αναστρεφ:turns back
 ανατελλ:rise
+αποφευγ:flee, escape
 αροτρευ:plow
 βαδιζ:walk, go
 βαιν:step, walk, go
 βλεπ:look, see
 βοηθ:help
 γεωργ:farm
+γιγνωσκ:know
+διωκ:persue
 εθελ: be willing, wish
 εισαγ:lead in, take in
 εισβαιν:go in, embark
@@ -17,11 +21,13 @@
 ελαυν:drive
 ελθ:come
 ελκ:drag
+εμπιπτει:falls upon, attacks
 ηκ:have come
 θεωρ:observe
 καθευδ:sleep
 καθιζ:sit
 καλ:call
+καταβαιν:go down
 καταβαλλ:drop
 κεντ:goad
 λαμβαν:take
@@ -29,8 +35,10 @@
 λειπ:leave
 λυ:loosen
 μεν:stay, wait
+οδω:road
 οικ:live, dwell
 παρεχ:provide
+πασχ:suffer, experience
 πειθ:persuade
 πιπτ:fall
 πληρ:fill
@@ -43,6 +51,7 @@
 σπειρ:sow
 σπευδ:hurry
 στεναζ:groan
+υλακτ:bark
 φερ:carry
 φησ:say
 φιλ:love

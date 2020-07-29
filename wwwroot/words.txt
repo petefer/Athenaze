@@ -10,11 +10,14 @@
 ανδρας:men
 ανθρωποι:men
 ανοητε:fool
+ἄπεισιν:they are away
 αροτρευειν:to plow
 αροτρον:plow
 αστυ:city
 ατεραντος:endless
+αυλιω:sheepfold
 βοες:oxen (nominative/vocative plural; irregular declension)
+βουλονται:they want
 βους:oxen (nominative/vocative singular; irregular declension)
 γαρ:for
 γυναικας:women (accusative)
@@ -39,7 +42,7 @@
 ικανον:enough
 και:and, also, too
 μαστιγια:jailbird
-Μέλιττα:Melissa
+Μελιττα:Melissa
 μεν:on the one hand...
 Μυρρινη:Myrtle
 ναι:yes

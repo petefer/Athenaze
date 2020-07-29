@@ -178,6 +178,14 @@
             person = "First";
             trans = "I";
         }
+        if (p.Equals("εμε"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "First";
+            trans = "me";
+        }
         if (p.Equals("εμου"))
         {
             type = "Pronoun";
@@ -186,7 +194,7 @@
             person = "First";
             trans = "of me";
         }
-        if (p.Equals("εμου"))
+        if (p.Equals("εμοι"))
         {
             type = "Pronoun";
             mood = "Dative";
@@ -203,6 +211,14 @@
             trans = "me";
         }
 
+        if (p.Equals("ημας"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Plural";
+            person = "First";
+            trans = "θσ";
+        }
         if (p.Equals("ημεις"))
         {
             type = "Pronoun";
@@ -210,6 +226,14 @@
             number = "Plural";
             person = "First";
             trans = "we";
+        }
+        if (p.Equals("ημιν"))
+        {
+            type = "Pronoun";
+            mood = "Dative";
+            number = "Plural";
+            person = "First";
+            trans = "to or for us";
         }
         if (p.Equals("ημων"))
         {
@@ -233,14 +257,9 @@
             mood = "Accusative";
             number = "Plural";
             person = "First";
-            trans = "me";
+            trans = "us";
         }
-        if (p.Equals("ημας"))
-        {
-            type = "Pronoun";
-            number = "Plural";
-            trans = "we two";
-        }
+
         if (p.Equals("νω"))
         {
             type = "Pronoun";
@@ -249,6 +268,7 @@
             person = "First";
             trans = "we two";
         }
+
         if (p.Equals("σεαυτον"))
         {
             type = "Pronoun";
@@ -299,7 +319,7 @@
             person = "Second";
             trans = "you";
         }
-        if (p.Equals("ημων"))
+        if (p.Equals("υμων"))
         {
             type = "Pronoun";
             mood = "Genitive";
@@ -307,7 +327,7 @@
             person = "Second";
             trans = "of you";
         }
-        if (p.Equals("ημιν"))
+        if (p.Equals("υμιν"))
         {
             type = "Pronoun";
             mood = "Dative";
@@ -315,7 +335,7 @@
             person = "Second";
             trans = "to or for you";
         }
-        if (p.Equals("ημας"))
+        if (p.Equals("υμας"))
         {
             type = "Pronoun";
             mood = "Accusative";
@@ -582,6 +602,11 @@
             type = "Preposition";
             trans = "in, on, among";
         }
+        if (p.Equals("εκ"))
+        {
+            type = "Preposition";
+            trans = "from";
+        }
         if (p.Equals("μετα"))
         {
             type = "Preposition";
@@ -593,6 +618,11 @@
     {
         type = "Adverb";
         string p = NormalizeString(lexis);
+        if (p.Equals("αγριως"))
+        {
+            trans = "savage, wild, fierce";
+            return;
+        }
         if (p.Equals("αει"))
         {
             trans = "always";
