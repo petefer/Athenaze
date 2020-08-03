@@ -10,12 +10,13 @@
 ανδρας:men
 ανθρωποι:men
 ανοητε:fool
-ἄπεισιν:they are away
+απεισιν:they are away
 αροτρευειν:to plow
 αροτρον:plow
 αστυ:city
 ατεραντος:endless
 αυλιω:sheepfold
+βασιλευς:king
 βοες:oxen (nominative/vocative plural; irregular declension)
 βουλονται:they want
 βους:oxen (nominative/vocative singular; irregular declension)
@@ -41,9 +42,12 @@
 ιδου:look!
 ικανον:enough
 και:and, also, too
+Κρητη:Crete
 μαστιγια:jailbird
 Μελιττα:Melissa
 μεν:on the one hand...
+Μινως:Minos
+Μινωταθρος:Minotaur
 Μυρρινη:Myrtle
 ναι:yes
 νυν:now

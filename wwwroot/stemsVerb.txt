@@ -30,6 +30,7 @@
 καταβαιν:go down
 καταβαλλ:drop
 κεντ:goad
+λαβυρινθ:labyrinth
 λαμβαν:take
 λεγ:say, tell, speak
 λειπ:leave

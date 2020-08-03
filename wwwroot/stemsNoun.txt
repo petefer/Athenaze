@@ -23,7 +23,8 @@
 λιθ:stone
 λυκ:wolf
 μεν:stay
-οικ:house
+νησ:island
+οικι:house
 ολιγ:few,small
 ορ:hill
 παππ:grandfather
