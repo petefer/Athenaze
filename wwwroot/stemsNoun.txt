@@ -12,7 +12,9 @@
 δουλ:slave
 εορτ:feast
 ερμ:stone heap
+ετ:year
 ηλι:sun
+ημερ:day
 θορυβ:uproar
 καθευδ:sleep
 καταρατ:cursed creature
@@ -20,10 +22,13 @@
 κληρ:farm
 κρην:spring
 κορ:girl
+Κρητ:Crete
 λιθ:stone
 λυκ:wolf
 μεν:stay
+νεανι:young man
 νησ:island
+ξιφ:sword
 οικι:house
 ολιγ:few,small
 ορ:hill

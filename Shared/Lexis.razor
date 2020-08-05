@@ -129,6 +129,10 @@
         {
             DestructVerb();
         }
+        if (type.Length == 0)
+        {
+            DestructNumeral();
+        }
         if (trans.Length == 0)
         {
             try
@@ -162,6 +166,15 @@
             trans = "him, it";
         }
         if (p.Equals("αυτον"))
+        {
+            type = "Pronoun";
+            mood = "Accusative";
+            number = "Singular";
+            person = "Third";
+            gender = "Masculine";
+            trans = "him, it";
+        }
+        if (p.Equals("αυτους"))
         {
             type = "Pronoun";
             mood = "Accusative";
@@ -525,12 +538,12 @@
         {
             type = "Particle";
             trans = "and so";
-        }        
+        }
         if (p.Equals("αρ") || p.Equals("αρα"))
         {
             type = "Particle";
             trans = "introduces question";
-        }        
+        }
     }
 
     void DestructInterjection()
@@ -543,7 +556,7 @@
         {
             type = "Interjection";
             trans = "O";
-        }        
+        }
     }
 
     void DestructConjunction()
@@ -752,7 +765,9 @@
                 if (lexis.EndsWith("ή"))
                 {
                     ptosis = "Nominative or vocative";
-                } else {
+                }
+                else
+                {
                     ptosis = "Dative";
                 }
                 number = "Singular";
@@ -1106,9 +1121,12 @@
             }
             if (p.EndsWith("ουσι") || p.EndsWith("ουσιν"))
             {
-                if (p.EndsWith("ουσιν")) {
+                if (p.EndsWith("ουσιν"))
+                {
                     trans = stemVerbGlossary[p.Substring(0, p.Length - 5)];
-                } else {
+                }
+                else
+                {
                     trans = stemVerbGlossary[p.Substring(0, p.Length - 4)];
                 }
                 type = "Verb";
@@ -1186,6 +1204,24 @@
         }
     }
 
+    void DestructNumeral()
+    {
+        try
+        {
+            string p = NormalizeString(lexis);
+            if (p.EndsWith("επτα"))
+            {
+                trans = "seven";
+                type = "Numeral";
+                return;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"DestructNumeral '{lexis}' threw {ex.Message}");
+        }
+    }
     /* 
     https://stackoverflow.com/questions/249087/how-do-i-remove-diacritics-accents-from-a-string-in-net
     */

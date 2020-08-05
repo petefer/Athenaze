@@ -1,6 +1,7 @@
 αγ:lead, take
 αιρ:lift
 ακου:hear
+αναγκαζ:force
 αναστρεφ:turns back
 ανατελλ:rise
 αποφευγ:flee, escape
@@ -11,6 +12,7 @@
 βοηθ:help
 γεωργ:farm
 γιγνωσκ:know
+δεχ:receive
 διωκ:persue
 εθελ: be willing, wish
 εισαγ:lead in, take in
@@ -22,7 +24,9 @@
 ελθ:come
 ελκ:drag
 εμπιπτει:falls upon, attacks
+εσθι:
 ηκ:have come
+θαυμαζ:to wonder
 θεωρ:observe
 καθευδ:sleep
 καθιζ:sit
