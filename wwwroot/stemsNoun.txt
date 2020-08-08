@@ -5,6 +5,7 @@
 αροτρ:plow
 αστ:city
 αυτουργ:farmer
+βασιλ:king
 βο:ox
 δειπν:meal
 δενδρ:tree
@@ -15,6 +16,7 @@
 ετ:year
 ηλι:sun
 ημερ:day
+Θηρι:
 θορυβ:uproar
 καθευδ:sleep
 καταρατ:cursed creature
@@ -38,6 +40,7 @@
 προβατ:sheep
 σιτ:grain
 σπερμ:seed
+ταυρ:bull
 τουτ:this
 υδρι:water jar
 υι:son

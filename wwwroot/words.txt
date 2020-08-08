@@ -37,6 +37,7 @@
 εισιν:is
 επαιρε:lift
 εχομεν:we have
+ημισυ:half
 Ζευ:Zeus
 θυγατηρ:daughter
 ιδου:look!

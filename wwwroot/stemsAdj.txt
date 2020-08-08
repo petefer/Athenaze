@@ -4,8 +4,10 @@
 αλλ:other
 ανδρει:brave
 αοκν:energetic
+δειν:terrible
 δυνατ:possible
 ελευθερ:free
+ημισ:half
 ικαν:enough
 ισχυρ:strong
 καλ:beautiful
