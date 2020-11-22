@@ -36,6 +36,7 @@
 ορ:hill
 παππ:grandfather
 ποδ:foot
+πολ:city
 πον:labor
 προβατ:sheep
 σιτ:grain

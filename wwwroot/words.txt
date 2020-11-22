@@ -55,6 +55,7 @@
 Ξανθιαν:Xanthias
 Ξανθιας:Xanthias
 ο:the
+ονομαζουσιν:they call
 ουν:and so
 ουτω:so, thus
 παι:child
